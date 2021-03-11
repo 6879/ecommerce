@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('change-password', 'ChangePasswordController@store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(
     ['middleware' => 'auth'],
@@ -74,6 +75,7 @@ Route::get('productTransferBack','ProductTransferController@backSummery');
 Route::get('brandwiseProductTransfer/{id}','ProductTransferController@productList');
 Route::get('productTransferTproduct','ProductTransferController@tProduct');
 Route::get('brandwise','PriceSetupController@brandWise');
+Route::resource('userInfo','UserInfoController');
 Route::resource('purchaseproducts','PurchaseProductController');
 Route::resource('priceSetup','PriceSetupController');
 Route::resource('warehouseLocation','WarehouseLocationController');

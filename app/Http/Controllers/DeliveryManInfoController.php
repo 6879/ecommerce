@@ -61,12 +61,13 @@ class DeliveryManInfoController extends Controller
             $ex=explode('/',$sub)[1];
             $name=time().".".$ex;
             $img=Image::make($request->image)->resize(200,200);
-            $upload_path=public_path()."/images/";
-            $img->save($upload_path.$name);
+            $upload_path=public_path()."/adminProfileImage/";
+            $img->save($upload_path.$name ,'jpg','png');
             $form= new DeliveryMan();     
             $form->image=$name;      
             $form->deliveryManId=$userId;      
             $form->permanentAddress=$request->permanentAddress;      
+            $form->phone=$request->phone;      
             $form->presentAddress=$request->presentAddress;      
             $form->skill=$request->skill;      
             $form->eduQualification=$request->eduQualification;      
@@ -110,7 +111,8 @@ class DeliveryManInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+       
     }
 
     /**

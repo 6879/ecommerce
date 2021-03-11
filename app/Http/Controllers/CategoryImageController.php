@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Image;
+use File;
 use Illuminate\Http\Request;
 use App\Models\CategoryImage;
 use App\Models\PriceSetup;
@@ -76,13 +77,17 @@ class CategoryImageController extends Controller
     public function update(Request $request, $id)
     {
         $form = CategoryImage::where('pname',$id)->first();
+        $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+        if (File::exists($usersImage)) {
+            unlink($usersImage);
+        }
         if($strpos = strpos($request->image, ';')){
         $strpos = strpos($request->image, ';');
         $sub = substr($request->image, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = time() . "." . $ex;
         $img = Image::make($request->image)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image = $name;
         }
@@ -117,92 +122,128 @@ class CategoryImageController extends Controller
             $form->image9= '';
         }
         if($strpos = strpos($request->image1, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image1, ';');
         $sub = substr($request->image1, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image1)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image1 = $name;
         }
         if($strpos = strpos($request->image2, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image2, ';');
         $sub = substr($request->image2, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image2)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image2 = $name;
         }
         if($strpos = strpos($request->image3, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image3, ';');
         $sub = substr($request->image3, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image3)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image3= $name;
         }
         if($strpos = strpos($request->image4, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image4, ';');
         $sub = substr($request->image4, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image4)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image4= $name;
         }
         if($strpos = strpos($request->image5, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image5, ';');
         $sub = substr($request->image5, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image5)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image5= $name;
         }
         if($strpos = strpos($request->image6, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image6, ';');
         $sub = substr($request->image6, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image6)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image6= $name;
         }
         if($strpos = strpos($request->image7, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image7, ';');
         $sub = substr($request->image7, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image7)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image7= $name;
         }
         if($strpos = strpos($request->image8, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image8, ';');
         $sub = substr($request->image8, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image8)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image8= $name;
         }
         if($strpos = strpos($request->image9, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
         $strpos = strpos($request->image9, ';');
         $sub = substr($request->image9, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image9)->resize(600, 600);
-        $upload_path = public_path() . "/images/";
+        $upload_path = public_path() . "/productImage/";
         $img->save($upload_path . $name);
         $form->image9= $name;
         }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DeliveryMan extends Model
 {
     use HasFactory;
+    public function designation(){
+        return $this->hasOne(AdminType::class,'id','roll');
+    }
 }

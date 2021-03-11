@@ -17,6 +17,7 @@ class CreateDeliveryMenTable extends Migration
             $table->id();
             $table->integer('deliveryManId');
             $table->integer('divisionId')->nullable();
+            $table->integer('phone')->nullable();
             $table->integer('districtId')->nullable();
             $table->integer('thanaId')->nullable();
             $table->integer('unionId')->nullable();

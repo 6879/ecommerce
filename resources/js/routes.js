@@ -29,6 +29,7 @@ import  SupplierStatement from './components/admin/SupplierStatement.vue';
 import  BusinessList from './components/admin/BusinessList.vue';
 import  PurchaseTypeList from './components/admin/PurchaseTypeList.vue';
 import  PurchaseInvoiceReport from './components/admin/PurchaseInvoiceReport.vue';
+import  ChangePassword from './components/admin/ChangePassword.vue';
 import  PurchaseList from './components/admin/PurchaseList.vue';
 import  PurchaseProductDetails from './components/admin/PurchaseProductDetails.vue';
 import  PriceSetup from './components/admin/PriceSetup.vue';
@@ -77,6 +78,7 @@ import  EditSlider from './components/admin/edit/EditSlider.vue';
 import  EditPrivacy from './components/admin/edit/EditPrivacy.vue';
 import  EditTerms from './components/admin/edit/EditTerms.vue';
 import  EditPriceRange from './components/admin/edit/EditPriceRange.vue';
+import  UserProfile from './components/admin/UserProfile.vue';
 import  EditFAQ from './components/admin/edit/EditFAQ.vue';
 import  EditOrderPolicy from './components/admin/edit/EditOrderPolicy.vue';
 import  EditAbout from './components/admin/edit/EditAbout.vue';
@@ -108,6 +110,16 @@ export const routes = [
     {    name: 'productlist',
          path: '/productlist',
          component: ProductList,
+        
+     },
+    {    name: 'userprofile',
+         path: '/userprofile',
+         component: UserProfile,
+        
+     },
+    {    name: 'changepassword',
+         path: '/changepassword',
+         component: ChangePassword,
         
      },
     {    name: 'searchproduct',

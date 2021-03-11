@@ -1,11 +1,22 @@
 <template>
   <div>
-      <div class="ml-3 mt-3" v-for="allDistrict in allDistricts" v-if="$route.params.id==allDistrict.id">
-          <div v-for="division in divisions" v-if="allDistrict.division_id==division.id">
-    <p> <span>{{division.name}}</span> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-<span>{{allDistrict.name}}</span> </p>
-          </div>
-  </div>
+    <div
+      class="ml-3 mt-3"
+      style="margin-bottom: -22px"
+      v-for="allDistrict in allDistricts"
+      v-if="$route.params.id == allDistrict.id"
+    >
+      <div
+        v-for="division in divisions"
+        v-if="allDistrict.division_id == division.id"
+      >
+        <p>
+          <span>{{ division.name }}</span>
+          <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+          <span>{{ allDistrict.name }}</span>
+        </p>
+      </div>
+    </div>
     <b-row class="ml-1 mr-1">
       <b-card-group
         class="col-6 col-md-2 col-xs-6 mt-3"
@@ -37,7 +48,7 @@ export default {
     return {
       thanas: [],
       allDistricts: [],
-       divisions:[],
+      divisions: [],
     };
   },
   mounted() {
@@ -53,16 +64,16 @@ export default {
           this.thanas = res.data;
         });
     },
-         allDistrict(){
-                axios.get('/allDistrict').then(res =>{
-                 this.allDistricts = res.data.allDistrict ;
-              })
-         } , 
-         division(){
-                axios.get('/division').then(res =>{
-                 this.divisions = res.data.division ;
-              })
-         } ,
+    allDistrict() {
+      axios.get("/allDistrict").then((res) => {
+        this.allDistricts = res.data.allDistrict;
+      });
+    },
+    division() {
+      axios.get("/division").then((res) => {
+        this.divisions = res.data.division;
+      });
+    },
   },
 };
 </script>

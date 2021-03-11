@@ -152,8 +152,8 @@ class CategoryController extends Controller
                 $ex = explode('/', $sub)[1];
                 $name =Str::random(5).time() . "." . $ex;
                 $img = Image::make($request->catImage)->resize(200, 200);
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->catImage = $name;
                 }
             if($request->bannerImage){
@@ -166,8 +166,8 @@ class CategoryController extends Controller
                     else{
                         $img = Image::make($request->bannerImage)->resize(563,173);  
                     };
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->bannerImage = $name;
                 }
             if($request->bannerImage2){
@@ -176,8 +176,8 @@ class CategoryController extends Controller
                 $ex = explode('/', $sub)[1];
                 $name =Str::random(5).time() . "." . $ex;
                 $img = Image::make($request->bannerImage2)->resize(1094, 256);
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->bannerImage2 = $name;
                 }
             $form->save();
@@ -209,8 +209,8 @@ class CategoryController extends Controller
                 $ex = explode('/', $sub)[1];
                 $name =Str::random(5).time() . "." . $ex;
                 $img = Image::make($request->catImage)->resize(200, 200);
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->catImage = $name;
                 }
             if($request->bannerImage){
@@ -223,8 +223,8 @@ class CategoryController extends Controller
                     else{
                         $img = Image::make($request->bannerImage)->resize(563,173);  
                     };
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->bannerImage = $name;
                 }
             if($request->bannerImage2){
@@ -233,8 +233,8 @@ class CategoryController extends Controller
                 $ex = explode('/', $sub)[1];
                 $name =Str::random(5).time() . "." . $ex;
                 $img = Image::make($request->bannerImage2)->resize(1094, 256);
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->bannerImage2 = $name;
                 }
             $form->save();
@@ -264,8 +264,8 @@ class CategoryController extends Controller
                 $ex = explode('/', $sub)[1];
                 $name =Str::random(5).time() . "." . $ex;
                 $img = Image::make($request->catImage)->resize(200, 200);
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->catImage = $name;
                 }
             if($request->bannerImage){
@@ -278,8 +278,8 @@ class CategoryController extends Controller
                     else{
                         $img = Image::make($request->bannerImage)->resize(563,173);  
                     };
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->bannerImage = $name;
                 }
             if($request->bannerImage2){
@@ -288,8 +288,8 @@ class CategoryController extends Controller
                 $ex = explode('/', $sub)[1];
                 $name =Str::random(5).time() . "." . $ex;
                 $img = Image::make($request->bannerImage2)->resize(1094, 256);
-                $upload_path = public_path() . "/images/";
-                $img->save($upload_path . $name);
+                $upload_path = public_path() . "/categoryImage/";
+                $img->save($upload_path . $name,'jpg','png');
                 $form->bannerImage2 = $name;
                 }
             $form->save();
@@ -302,8 +302,8 @@ class CategoryController extends Controller
         $ex = explode('/', $sub)[1];
         $name =Str::random(5).time() . "." . $ex;
         $img = Image::make($request->image)->resize(200, 200);
-        $upload_path = public_path() . "/images/";
-        $img->save($upload_path . $name);
+        $upload_path = public_path() . "/categoryImage/";
+        $img->save($upload_path . $name,'jpg','png');
         $form->image = $name;
         }
      
@@ -313,8 +313,8 @@ class CategoryController extends Controller
             $ex = explode('/', $sub)[1];
             $name =Str::random(5).time() . "." . $ex;
             $img = Image::make($request->catImage)->resize(200, 200);
-            $upload_path = public_path() . "/images/";
-            $img->save($upload_path . $name);
+            $upload_path = public_path() . "/categoryImage/";
+            $img->save($upload_path . $name,'jpg','png');
             $form->catImage = $name;
             }
         if($request->bannerImage){
@@ -327,8 +327,8 @@ class CategoryController extends Controller
                 else{
                     $img = Image::make($request->bannerImage)->resize(563,173);  
                 };
-            $upload_path = public_path() . "/images/";
-            $img->save($upload_path . $name);
+            $upload_path = public_path() . "/categoryImage/";
+            $img->save($upload_path . $name,'jpg','png');
             $form->bannerImage = $name;
             }     
         if($request->bannerImage2){
@@ -337,8 +337,8 @@ class CategoryController extends Controller
             $ex = explode('/', $sub)[1];
             $name =Str::random(5).time() . "." . $ex;
             $img = Image::make($request->bannerImage2)->resize(1094, 256);
-            $upload_path = public_path() . "/images/";
-            $img->save($upload_path . $name);
+            $upload_path = public_path() . "/categoryImage/";
+            $img->save($upload_path . $name,'jpg','png');
             $form->bannerImage2 = $name;
             }     
      

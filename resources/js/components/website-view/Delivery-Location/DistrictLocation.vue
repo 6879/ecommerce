@@ -1,8 +1,13 @@
 <template>
   <div>
-  <div class="ml-3 mt-3" v-for="division in divisions" v-if="$route.params.id==division.id">
-      <h5>{{division.name}}</h5>
-  </div>
+    <div
+      class="ml-3 mt-3"
+      style="margin-bottom: -14px"
+      v-for="division in divisions"
+      v-if="$route.params.id == division.id"
+    >
+      <h5>{{ division.name }}</h5>
+    </div>
     <b-row class="ml-1 mr-1">
       <b-card-group
         class="col-6 col-md-2 col-xs-6 mt-3"
@@ -32,39 +37,37 @@
 export default {
   data() {
     return {
-        locationId:'',
+      locationId: "",
       districts: [],
-      divisions:[],
+      divisions: [],
     };
   },
   mounted() {
     this.viewDistrict();
     this.division();
   },
-   
-  methods: {
 
+  methods: {
     viewDistrict() {
       axios.get(`deliveryLocationWeb/${this.$route.params.id}`).then((res) => {
         this.districts = res.data;
       });
     },
-    division(){
-                axios.get('/division').then(res =>{
-                 this.divisions = res.data.division ;
-              })
-         } ,
+    division() {
+      axios.get("/division").then((res) => {
+        this.divisions = res.data.division;
+      });
+    },
   },
-   
-  watch:{
-       '$route' (to, from) {     
-   this.viewDistrict();
-    this.viewDistrict();
-    this.division();
-   this.$route.params.id=""
 
-      },
-  }
+  watch: {
+    $route(to, from) {
+      this.viewDistrict();
+      this.viewDistrict();
+      this.division();
+      this.$route.params.id = "";
+    },
+  },
 };
 </script>
 

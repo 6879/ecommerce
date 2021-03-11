@@ -52,7 +52,8 @@ class DeliveryLocationWebViewController extends Controller
     public function viewWardLocation($id)
     {
         $ward=DeliveryTime::with('ward','union','deliveryCharge')->where('thanaId',$id)->get();
-        return response()->json($ward);
+        $wardview=DeliveryTime::with('ward','union','deliveryCharge')->where('thanaId',$id)->first();
+        return ['ward'=>$ward,'wardview'=>$wardview];
     }
 
     /**
