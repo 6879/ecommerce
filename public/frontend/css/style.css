@@ -555,6 +555,9 @@ border-left: 1px solid #c8a005
 .location:hover{
     box-shadow: 0 0 11px rgba(64, 103, 233, 0.2);  
 }
+.offerMaindiv:hover{
+    box-shadow: 0 1px 15px #a7a7a7  
+}
 .locationDrop{
     width: 101%;
     text-align: center;

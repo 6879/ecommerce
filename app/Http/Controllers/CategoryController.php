@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use File;
 use Image;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -439,16 +439,24 @@ class CategoryController extends Controller
     {
         $form=Category::find($id);
         if($strpos = strpos($request->catImage, ';')){
+            $usersImage = public_path("/categoryImage/{$form->catImage}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
             $strpos = strpos($request->catImage, ';');
             $sub = substr($request->catImage, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name = Str::random(5).time() . "." . $ex;
             $img = Image::make($request->catImage)->resize(200, 200);
-            $upload_path = public_path() . "/images/";
+            $upload_path = public_path() . "/categoryImage/";
             $img->save($upload_path . $name);
             $form->catImage = $name;
             }
         if($strpos = strpos($request->bannerImage, ';')){
+            $usersImage = public_path("/categoryImage/{$form->bannerImage}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
             $strpos = strpos($request->bannerImage, ';');
             $sub = substr($request->bannerImage, 0, $strpos);
             $ex = explode('/', $sub)[1];
@@ -458,27 +466,35 @@ class CategoryController extends Controller
             else{
                 $img = Image::make($request->bannerImage)->resize(563,173);  
             };
-            $upload_path = public_path() . "/images/";
+            $upload_path = public_path() . "/categoryImage/";
             $img->save($upload_path . $name);
             $form->bannerImage = $name;
             }
         if($strpos = strpos($request->bannerImage2, ';')){
+            $usersImage = public_path("/categoryImage/{$form->bannerImage2}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
             $strpos = strpos($request->bannerImage2, ';');
             $sub = substr($request->bannerImage2, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name = Str::random(5).time() . "." . $ex;
             $img = Image::make($request->bannerImage2)->resize(563, 173);
-            $upload_path = public_path() . "/images/";
+            $upload_path = public_path() . "/categoryImage/";
             $img->save($upload_path . $name);
             $form->bannerImage2 = $name;
             }
         if($strpos = strpos($request->image, ';')){
+            $usersImage = public_path("/categoryImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
             $strpos = strpos($request->image, ';');
             $sub = substr($request->image, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name = Str::random(5).time() . "." . $ex;
             $img = Image::make($request->image)->resize(200, 200);
-            $upload_path = public_path() . "/images/";
+            $upload_path = public_path() . "/categoryImage/";
             $img->save($upload_path . $name);
             $form->image = $name;
             }
@@ -502,7 +518,22 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-      
+        $usersImage = public_path("/categoryImage/{$category->image}"); // get previous image from folder
+        if (File::exists($usersImage)) {
+            unlink($usersImage);
+        }
+        $usersImage2 = public_path("/categoryImage/{$category->catImage}"); // get previous image from folder
+        if (File::exists($usersImage2)) {
+            unlink($usersImage2);
+        }
+        $usersImage3 = public_path("/categoryImage/{$category->bannerImage}"); // get previous image from folder
+        if (File::exists($usersImage3)) {
+            unlink($usersImage3);
+        }
+        $usersImage4 = public_path("/categoryImage/{$category->bannerImage2}"); // get previous image from folder
+        if (File::exists($usersImage4)) {
+            unlink($usersImage4);
+        }
         $category->delete();
         return new CategoryResource($category);
         

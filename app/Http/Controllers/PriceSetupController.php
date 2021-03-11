@@ -107,6 +107,11 @@ class PriceSetupController extends Controller
     {
         //
     }
+    public function salesPrice($id)
+    {
+        $salesP=PriceSetup::where('pname',$id)->first();
+        return response()->json($salesP);
+    }
 
     /**
      * Show the form for editing the specified resource.

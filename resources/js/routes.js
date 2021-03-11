@@ -57,6 +57,7 @@ import  ProductTransferBackReport from './components/admin/ProductTransferBackRe
 import  BrandwiseProductList from './components/admin/BrandwiseProductList.vue';
 import  CategoryPermission from './components/admin/CategoryPermission.vue';
 import  ProductImageAdd from './components/admin/ProductImageAdd.vue';
+import  OfferEntry from './components/admin/OfferManagement/OfferEntry.vue';
 import  ProductImageDetails from './components/admin/ProductImageDetails.vue';
 import  FilteringStatus from './components/admin/FilteringStatus.vue';
 import  CategoryWiseView from './components/website-view/CategoryWiseView.vue';
@@ -65,6 +66,7 @@ import  DistrictLocaton from './components/website-view/Delivery-Location/Distri
 import  ThanaLocaton from './components/website-view/Delivery-Location/ThanaLocation.vue';
 import  WardLocaton from './components/website-view/Delivery-Location/WardLocation.vue';
 import  CategoryThirdProductView from './components/website-view/CategoryThirdProductView.vue';
+import  Offer from './components/website-view/Offer/Offer.vue';
 import  SearchProduct from './components/website-view/SearchProduct.vue';
 import  DeliveryManInfo from './components/admin/DeliveryMan/DeliveryManInfo.vue';
 import  EditWarehouse from './components/admin/edit/EditWarehouse.vue';
@@ -110,16 +112,31 @@ export const routes = [
     {    name: 'productlist',
          path: '/productlist',
          component: ProductList,
+         meta: { hideDashboard: true }
         
      },
     {    name: 'userprofile',
          path: '/userprofile',
          component: UserProfile,
+         meta: { hideDashboard: true }
         
      },
     {    name: 'changepassword',
          path: '/changepassword',
          component: ChangePassword,
+         meta: { hideDashboard: true }
+        
+     },
+    {    name: 'offer',
+         path: '/offer',
+         component: OfferEntry,
+         meta: { hideDashboard: true }
+        
+     },
+    {    name: 'offerview',
+         path: '/offerview',
+         component: Offer,
+         meta: { hideDashboard: true }
         
      },
     {    name: 'searchproduct',

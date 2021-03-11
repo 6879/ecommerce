@@ -442,7 +442,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + menu.image"
+                  :src="'/categoryImage/' + menu.image"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -450,7 +450,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + menu.catImage"
+                  :src="'/categoryImage/' + menu.catImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -458,7 +458,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + menu.bannerImage"
+                  :src="'/categoryImage/' + menu.bannerImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -466,7 +466,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + menu.bannerImage2"
+                  :src="'/categoryImage/' + menu.bannerImage2"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -540,7 +540,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + subcatlist.catImage"
+                  :src="'/categoryImage/' + subcatlist.catImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -548,7 +548,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + subcatlist.bannerImage"
+                  :src="'/categoryImage/' + subcatlist.bannerImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -556,7 +556,7 @@
               </td>
               <td>
                 <img
-                  :src="'/images/' + subcatlist.bannerImage2"
+                  :src="'/categoryImage/' + subcatlist.bannerImage2"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -635,7 +635,7 @@
                   </td>
                     <td>
                 <img
-                  :src="'/images/' + thirdcatlistsub.catImage"
+                  :src="'/categoryImage/' + thirdcatlistsub.catImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -643,7 +643,7 @@
               </td>
                     <td>
                 <img
-                  :src="'/images/' + thirdcatlistsub.bannerImage"
+                  :src="'/categoryImage/' + thirdcatlistsub.bannerImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -651,7 +651,7 @@
               </td>
                     <td>
                 <img
-                  :src="'/images/' + thirdcatlistsub.bannerImage2"
+                  :src="'/categoryImage/' + thirdcatlistsub.bannerImage2"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -738,7 +738,7 @@
                     </td>
                       <td>
                 <img
-                  :src="'/images/' + fourthcatlist.catImage"
+                  :src="'/categoryImage/' + fourthcatlist.catImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -746,7 +746,7 @@
               </td>
                       <td>
                 <img
-                  :src="'/images/' + fourthcatlist.bannerImage"
+                  :src="'/categoryImage/' + fourthcatlist.bannerImage"
                   class="img-responsive"
                   height="35"
                   width="70"
@@ -754,7 +754,7 @@
               </td>
                       <td>
                 <img
-                  :src="'/images/' + fourthcatlist.bannerImage2"
+                  :src="'/categoryImage/' + fourthcatlist.bannerImage2"
                   class="img-responsive"
                   height="35"
                   width="70"

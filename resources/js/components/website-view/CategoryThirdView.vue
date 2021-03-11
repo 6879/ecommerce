@@ -11,20 +11,20 @@
          
                 <div class="col-12 col-md-12 col-xs-12   paddingImage hover01" v-for="menu in menus" :key="menu.id"   v-if="$route.params.id == menu.id&&menu.bannerImageType==1" >
             
-                    <figure> <img class="img-fluid boxBanImage "  :src="'images/' + menu.bannerImage"> </figure>
+                    <figure> <img class="img-fluid boxBanImage "  :src="'categoryImage/' + menu.bannerImage"> </figure>
                   
                 </div>
 
                   <div class="col-12 col-md-12 col-xs-12 " >
                              <div class="row" v-for="menu in menus" :key="menu.id" v-if="$route.params.id == menu.id&&menu.bannerImageType==2">
                 <div class="col-6 col-md-6 col-xs-6 pl-0 pr-0 hover01"   >
-              <figure> <img class="img-fluid boxBanImage " width="100%"   :src="'images/' + menu.bannerImage"> </figure>
+              <figure> <img class="img-fluid boxBanImage " width="100%"   :src="'categoryImage/' + menu.bannerImage"> </figure>
                    
                   
                 </div>
                 <div class="col-6 col-md-6 col-xs-6 pl-0 pr-0 hover01"    >
             
-                  <figure> <img class="img-fluid boxBanImage  " :src="'images/' + menu.bannerImage2"> </figure>
+                  <figure> <img class="img-fluid boxBanImage  " :src="'categoryImage/' + menu.bannerImage2"> </figure>
                   </div>
                 </div>               
                 </div> 
@@ -59,7 +59,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + catinfo.catImage"
+                    :src="'categoryImage/' + catinfo.catImage"
                   />
                 </figure>
               </router-link>
@@ -245,7 +245,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + prod.image"
+                    :src="'productImage/' + prod.image"
                   />
                 </figure>
                <div class="overlay">
@@ -276,8 +276,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + prod.image"
-                                  :img-zoom="'images/' + prod.image"
+                                  :img-normal="'productImage/' + prod.image"
+                                  :img-zoom="'productImage/' + prod.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -594,7 +594,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + filterprice.image"
+                    :src="'productImage/' + filterprice.image"
                   />
                 </figure>
                <div class="overlay">
@@ -625,8 +625,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + filterprice.image"
-                                  :img-zoom="'images/' + filterprice.image"
+                                  :img-normal="'productImage/' + filterprice.image"
+                                  :img-zoom="'productImage/' + filterprice.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -943,7 +943,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + productUnit.image"
+                    :src="'productImage/' + productUnit.image"
                   />
                 </figure>
                <div class="overlay">
@@ -974,8 +974,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + productUnit.image"
-                                  :img-zoom="'images/' + productUnit.image"
+                                  :img-normal="'productImage/' + productUnit.image"
+                                  :img-zoom="'productImage/' + productUnit.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -1292,7 +1292,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + productColor.image"
+                    :src="'productImage/' + productColor.image"
                   />
                 </figure>
                <div class="overlay">
@@ -1323,8 +1323,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + productColor.image"
-                                  :img-zoom="'images/' + productColor.image"
+                                  :img-normal="'productImage/' + productColor.image"
+                                  :img-zoom="'productImage/' + productColor.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -1641,7 +1641,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + rangeProduct.image"
+                    :src="'productImage/' + rangeProduct.image"
                   />
                 </figure>
                <div class="overlay">
@@ -1672,8 +1672,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + rangeProduct.image"
-                                  :img-zoom="'images/' + rangeProduct.image"
+                                  :img-normal="'productImage/' + rangeProduct.image"
+                                  :img-zoom="'productImage/' + rangeProduct.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -1990,7 +1990,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + product.image"
+                    :src="'productImage/' + product.image"
                   />
                 </figure>
                  <div class="overlay">
@@ -2021,8 +2021,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + product.image"
-                                  :img-zoom="'images/' + product.image"
+                                  :img-normal="'productImage/' + product.image"
+                                  :img-zoom="'productImage/' + product.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -2378,7 +2378,7 @@
               <td>
                 <figure>
                   <img
-                    :src="'images/' + cart.image"
+                    :src="'productImage/' + cart.image"
                     class="cartImg mt-7"
                     style="margin-left: -9px; margin-top: -2px"
                   />

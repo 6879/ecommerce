@@ -1,6 +1,7 @@
  <template>
   <div>
         <router-view></router-view>
+        
     <div v-if="!$route.meta.hideDashboard">
       <div class="container-fluid" v-if="slider == true">
         <div class="col-12 col-md-12 col-xs-12 mainBox">
@@ -79,7 +80,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + item.image"
+                    :src="'productImage/' + item.image"
                   />
                 </figure>
 
@@ -111,8 +112,8 @@
                             <div class="col-md-6">
                               <div  class="zoomImg">
                                 <zoom-on-hover
-                                  :img-normal="'images/' + item.image"
-                                  :img-zoom="'images/' + item.image"
+                                  :img-normal="'productImage/' + item.image"
+                                  :img-zoom="'productImage/' + item.image"
                                   :scale="2"
                                 ></zoom-on-hover>
                               </div>                             
@@ -445,6 +446,7 @@
                 v-model="searchItem"
                 placeholder="Search"
                 aria-label="Search"
+                @searchItem="searchItem($val)"
                 autofocus
               />
               <button class="btn my-2 my-sm-0 btnSearch" type="submit">
@@ -502,11 +504,11 @@
             </div>
             <div class="px-3 py-2 mt-0">
               <center class="mtside">
-                <button class="btn">
-                  <i class="fa fa-gift"></i> OFFER<span class="amount"
+                
+                       <router-link :to="{ name: 'offerview'}"><i class="fa fa-gift"></i> OFFER<span class="amount"
                     >&nbsp;<b>(45)</b></span
-                  >
-                </button>
+                  ></router-link>
+                
               </center>
               <navbar> </navbar>
             </div>
@@ -530,7 +532,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + menucat.catImage"
+                    :src="'categoryImage/' + menucat.catImage"
                   />
                 </figure>
               </router-link>
@@ -580,7 +582,7 @@
                 <figure>
                   <img
                     class="img-fluid box3Images"
-                    :src="'images/' + product.image"
+                    :src="'productImage/' + product.image"
                   />
                 </figure>
 
@@ -640,8 +642,8 @@
                       <div class="col-md-6">
                         <div class="zoomImg">
                           <zoom-on-hover
-                            :img-normal="'images/' + product.image"
-                            :img-zoom="'images/' + product.image"
+                            :img-normal="'productImage/' + product.image"
+                            :img-zoom="'productImage/' + product.image"
                             :scale="2"
                           ></zoom-on-hover>
                         </div>
@@ -1391,7 +1393,9 @@ export default {
   },
   watch: {
     searchItem: function (val) {
-      this.$router.push({ name: "searchproduct" });
+  
+          this.$router.push({ name: "searchproduct" });
+    
       this.search(val);
       if (!this.searchItem) {
         this.resultDiv.display = "none";

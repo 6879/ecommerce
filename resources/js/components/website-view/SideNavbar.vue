@@ -3,6 +3,7 @@
     
     <div v-for="(menu, index) in menus" :key="menu.id">
       <div class="accordion" role="tablist">
+        
         <b-card no-body class="mb-1">
           <b-card-header header-tag="header" class="p-1" role="tab">
             <router-link
@@ -14,7 +15,7 @@
                 v-on:click="toggleItem(index)"
                 class="d-flex"
               >
-                <img class="menuImage" :src="'images/' + menu.image" />&nbsp;
+                <img class="menuImage" :src="'categoryImage/' + menu.image" />&nbsp;
                 <span> {{ menu.catName }}</span>
                 <strong class="ml-auto">
                   <i

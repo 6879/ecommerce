@@ -503,7 +503,7 @@ export default {
               return this.form.image;
          }
          else{
-           return `images/${this.form.image}`
+           return `categoryImage/${this.form.image}`
          }
        },
     OurCatPhoto(){
@@ -512,7 +512,7 @@ export default {
               return this.form.catImage;
          }
          else{
-           return `images/${this.form.catImage}`
+           return `categoryImage/${this.form.catImage}`
          }
        },
     OurBannerPhoto(){
@@ -521,7 +521,7 @@ export default {
               return this.form.bannerImage;
          }
          else{
-           return `images/${this.form.bannerImage}`
+           return `categoryImage/${this.form.bannerImage}`
          }
        },
     OurBannerPhoto2(){
@@ -530,7 +530,7 @@ export default {
               return this.form.bannerImage2;
          }
          else{
-           return `images/${this.form.bannerImage2}`
+           return `categoryImage/${this.form.bannerImage2}`
          }
        },
  

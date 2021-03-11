@@ -474,7 +474,7 @@ export default {
               return this.form.image1;
          }
          else{
-           return `images/${this.form.image1}`
+           return `productImage/${this.form.image1}`
          }
          }
        },
@@ -485,7 +485,7 @@ export default {
               return this.form.image2;
          }
          else{
-           return `images/${this.form.image2}`
+           return `productImage/${this.form.image2}`
          }
          }
        },
@@ -496,7 +496,7 @@ export default {
               return this.form.image3;
          }
          else{
-           return `images/${this.form.image3}`
+           return `productImage/${this.form.image3}`
          }
          }
        },
@@ -507,7 +507,7 @@ export default {
               return this.form.image4;
          }
          else{
-           return `images/${this.form.image4}`
+           return `productImage/${this.form.image4}`
          }
          }
        },
@@ -518,7 +518,7 @@ export default {
               return this.form.image5;
          }
          else{
-           return `images/${this.form.image5}`
+           return `productImage/${this.form.image5}`
          }
          }
        },
@@ -529,7 +529,7 @@ export default {
               return this.form.image6;
          }
          else{
-           return `images/${this.form.image6}`
+           return `productImage/${this.form.image6}`
          }
          }
        },
@@ -540,7 +540,7 @@ export default {
               return this.form.image7;
          }
          else{
-           return `images/${this.form.image7}`
+           return `productImage/${this.form.image7}`
          }
          }
        },
@@ -551,7 +551,7 @@ export default {
               return this.form.image8;
          }
          else{
-           return `images/${this.form.image8}`
+           return `productImage/${this.form.image8}`
          }
          }
        },
@@ -562,7 +562,7 @@ export default {
               return this.form.image9;
          }
          else{
-           return `images/${this.form.image9}`
+           return `productImage/${this.form.image9}`
          }
          }
        },
@@ -584,7 +584,7 @@ export default {
               
          }
          else{
-           return `images/${this.form.image}`
+           return `productImage/${this.form.image}`
          }
        }
          

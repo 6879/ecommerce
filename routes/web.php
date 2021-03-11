@@ -75,6 +75,7 @@ Route::get('productTransferBack','ProductTransferController@backSummery');
 Route::get('brandwiseProductTransfer/{id}','ProductTransferController@productList');
 Route::get('productTransferTproduct','ProductTransferController@tProduct');
 Route::get('brandwise','PriceSetupController@brandWise');
+Route::get('salesPrice/{id}','PriceSetupController@salesPrice');
 Route::resource('userInfo','UserInfoController');
 Route::resource('purchaseproducts','PurchaseProductController');
 Route::resource('priceSetup','PriceSetupController');
@@ -87,6 +88,7 @@ Route::resource('location','BangladeshLocationController');
 Route::resource('deliveryLocation','DeliveryLocationController');
 Route::resource('deliveryCharge','DeliveryChargeController');
 Route::resource('deliveryManInfo','DeliveryManInfoController');
+Route::resource('offer','OfferController');
 
 });
 Route::resource('productView','ProductViewController');
