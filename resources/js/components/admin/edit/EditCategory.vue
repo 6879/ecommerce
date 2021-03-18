@@ -152,13 +152,13 @@
               </div>
                 
               <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="form.bannerImageType"  @change.prevent="singleBannerShow()" id="inlineRadio1" :value="1">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="form.bannerImageType" @change.prevent="singleBannerShow()" id="inlineRadio1" :value="1">
   <label class="form-check-label" for="inlineRadio1">Single Banner Image</label>
 
   <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="form.bannerImageType" @change.prevent="multiBannerShow()" id="inlineRadio2" :value="2">
   <label class="form-check-label" for="inlineRadio2">Multi Banner Image</label>
 </div>
-              <div class="row" >
+              <div class="row"  v-if="singleBanner">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="exampleFormControlFile1"
@@ -172,7 +172,7 @@
                     name="bannerImage"
                   />
                   <img
-                    :src="OurBannerPhoto()"
+                      :src="form.bannerImage"
                     name="bannerImage"
                     class="img-responsive"
                     height="70"
@@ -181,7 +181,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row" >
+              <div class="row" v-if="multiBanner">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="exampleFormControlFile1"
@@ -195,7 +195,7 @@
                     name="bannerImage2"
                   />
                   <img
-                    :src="OurBannerPhoto2()"
+                      :src="form.bannerImage2"
                     name="bannerImage2"
                     class="img-responsive"
                     height="70"
@@ -401,6 +401,11 @@ export default {
       thirdcatpo: true,
       fourthcatpo: true,
       // catpo: true,
+      catpo: true,
+      imageShow: true,
+      singleBanner: false,
+      multiBanner: false,
+      catImageShow: true
     };
   },
   mounted() {
@@ -462,6 +467,15 @@ export default {
                     }
       });
     },
+        multiBannerShow(){
+       
+      this.singleBanner=true;
+      this.multiBanner=true;
+    },
+    singleBannerShow(){
+      this.singleBanner=true;
+      this.multiBanner=false;
+    },
      allCategoryShow(){
              axios.get('/categoryEdit/allCategory').then(res =>{
                     this.subcats = res.data.assetSubCategoryLists;
@@ -469,6 +483,7 @@ export default {
                   
              });
           },
+    
      viewMenu() {
       axios.get("categorylist").then((res) => {
         this.menus = res.data.categoryList;
@@ -530,7 +545,12 @@ export default {
               return this.form.bannerImage2;
          }
          else{
+          
+          
            return `categoryImage/${this.form.bannerImage2}`
+          
+             
+          
          }
        },
  

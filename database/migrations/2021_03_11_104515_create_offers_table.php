@@ -15,10 +15,10 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->integer('pname');
+            $table->integer('productId');
             $table->string('startDate',100);
             $table->string('endDate',100);
-            $table->string('image',100);
+            $table->string('offerImage',100);
             $table->integer('ammountType');
             $table->integer('offerPrice');
             $table->integer('totalPrice');

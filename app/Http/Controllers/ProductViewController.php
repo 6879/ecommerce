@@ -20,17 +20,35 @@ class ProductViewController extends Controller
      */
     public function index()
     {
-        $priceget = PriceSetup::join('category_images', 'price_setups.pname', '=', 'category_images.pname')
+        $priceget = PriceSetup::with('offer','productName')->join('category_images', 'price_setups.pname', '=', 'category_images.pname')
 
             ->join('product_names', 'product_names.id', '=', 'price_setups.pname')
 
             ->join('product_categories', 'product_categories.productNameId', '=', 'price_setups.pname')
             ->join('purchase_products', 'purchase_products.pname', '=', 'price_setups.pname')
-
+           
             ->where('status', 1)
-            ->get(['price_setups.*', 'category_images.*', 'product_names.pname', 'product_categories.productNameId', 'product_categories.categoryId','purchase_products.unit','product_categories.productNameId' ]);
+            ->distinct('productNameId')
+            ->get();
 
         return ['priceget' => $priceget];
+    }
+    public function offerView(){
+        $offerView = PriceSetup::with('offer')->join('category_images', 'price_setups.pname', '=', 'category_images.pname')
+
+        ->join('product_names', 'product_names.id', '=', 'price_setups.pname')
+        ->join('product_categories', 'product_categories.productNameId', '=', 'price_setups.pname')
+       
+        ->join('purchase_products', 'purchase_products.pname', '=', 'price_setups.pname')
+        ->join('offers', 'offers.productId', '=', 'price_setups.pname')
+        ->distinct('productNameId')
+        ->get(['price_setups.*', 'category_images.*','product_categories.productNameId', 'product_names.pname', 'purchase_products.unit','offers.*']);
+
+      
+
+     
+     
+        return ['offerView'=>$offerView];
     }
     public function brandGet()
     {
@@ -75,13 +93,13 @@ class ProductViewController extends Controller
     }
     public function searchProductView()
     {
-        $productget = PriceSetup::join('category_images', 'price_setups.pname', '=', 'category_images.pname')
+        $productget = PriceSetup::with('productName','offer')->join('category_images', 'price_setups.pname', '=', 'category_images.pname')
             ->join('product_names', 'product_names.id', '=', 'price_setups.pname')   
             ->join('purchase_products', 'purchase_products.pname', '=', 'price_setups.pname')
-            ->join('product_categories', 'product_categories.productNameId', '=', 'price_setups.pname')
+          
             ->where('status', 1)
-            ->distinct('productNameId')
-            ->get(['price_setups.*', 'category_images.*', 'product_names.pname','purchase_products.unit','product_categories.productNameId']);
+       
+            ->get();
 
         return ['productget' => $productget];
     }
@@ -132,11 +150,11 @@ class ProductViewController extends Controller
     {
         $minprice=(int)$request->input('price1');
         $maxprice=(int)$request->input('price2');
-        $filPrice = PriceSetup::join('category_images', 'price_setups.pname', '=', 'category_images.pname')
-            ->join('product_names', 'product_names.id', '=', 'price_setups.pname')
+        $filPrice = PriceSetup::with('productName','offer')->join('category_images', 'price_setups.pname', '=', 'category_images.pname')
+           
             ->join('product_categories', 'product_categories.productNameId', '=', 'price_setups.pname')
             ->where('status', 1)->whereBetween('salesPrice', [$minprice,$maxprice])
-            ->get(['price_setups.*', 'category_images.*', 'product_names.pname', 'product_categories.productNameId', 'product_categories.categoryId']);
+            ->get();
         return ['filPrice' => $filPrice];
     }
 

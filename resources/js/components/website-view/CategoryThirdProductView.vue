@@ -3041,7 +3041,7 @@ export default {
       },
     };
   },
-  mounted() {
+ async mounted() {
     this.viewCat();
     this.viewMenuCat();
     this.viewPrice();
@@ -3431,7 +3431,7 @@ export default {
         .catch((err) => console.log(err));
     },
     getProductName(product) {
-      let pname = this.stripTags(product.pname);
+      let pname = this.stripTags(product.product_name.pname);
 
       return pname.length > 35 ? pname.substring(0, 35) + "..." : pname;
     },

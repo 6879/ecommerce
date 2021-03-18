@@ -47,7 +47,8 @@ import { BootstrapVue } from 'bootstrap-vue'
 
 Vue.use(BootstrapVue)
 import InputTag from 'vue-input-tag'
-
+import { TablePlugin } from 'bootstrap-vue'
+Vue.use(TablePlugin)
 Vue.component('input-tag', InputTag)
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 const app = new Vue({

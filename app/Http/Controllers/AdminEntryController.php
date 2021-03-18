@@ -43,6 +43,7 @@ class AdminEntryController extends Controller
         'email' => 'required | unique:users',
         'name'  => 'required | unique:users',
         'userId' => 'required | unique:users',            
+        'phone' => 'required ',            
         'password' => 'required',
         ]);       
         return User::create([
@@ -52,6 +53,7 @@ class AdminEntryController extends Controller
             'roll' => $request['roll'],
             'userId' => $request['userId'],
             'address' => $request['address'],
+            'phone' => $request['phone'],
             'password' => Hash::make($request['password']),
         ]);      
        

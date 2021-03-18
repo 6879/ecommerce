@@ -145,7 +145,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><img src="image/logo.png" style="height:35px"></h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"><img src="" style="height:35px"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -182,7 +182,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-  <script src="{{URL::asset('frontend/js/bootstrap.min.js')}}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="{{URL::asset('frontend/js/bootstrap.min.js')}}" ></script>
   <script src="{{URL::asset('frontend/js/sidebar.js')}}"></script>
   <script src="{{URL::asset('frontend/js/animation.js')}}"></script>
   <script src="{{URL::asset('frontend/js/zoomsl.min.js')}}"></script>

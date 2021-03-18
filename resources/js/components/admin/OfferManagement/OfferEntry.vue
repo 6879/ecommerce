@@ -17,7 +17,7 @@
                     >
                     <select
                       class="form-control"
-                      v-model="form.pname"
+                      v-model="form.productId"
                       id="exampleFormControlSelect1"
                       name="pname"
                       @change.prevent="priceShow()"
@@ -156,7 +156,7 @@
                       name="image"
                     />
                     <img
-                      :src="form.image"
+                      :src="form.offerImage"
                       class="img-responsive"
                       height="70"
                       width="90"
@@ -207,30 +207,34 @@
             <tr>
               <th>ID</th>
               <th>Product Name</th>
-              <th>Brand</th>
-              <th>Sales Price</th>
+              <th>Offer_Start_Date</th>
+              <th>Offer_Start_Date</th>
+              <th>Discount</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(price, index) in prices" :key="price.id">
+            <tr v-for="(offer, index) in offers" :key="offer.id">
               <td>{{ index + 1 }}</td>
               <td
                 v-for="name in names"
                 :key="name.id"
-                v-if="name.id == price.pname"
+                v-if="name.id == offer.productId"
               >
                 {{ name.pname }}
               </td>
-              <td
-                v-for="brand in brands"
-                :key="brand.id"
-                v-if="brand.id == price.brand"
-              >
-                {{ brand.brand }}
+              <td>
+                {{ offer.startDate }}
               </td>
               <td>
-                {{ price.salesPrice }}
+                {{ offer.endDate }}
+              </td>
+              <td>
+                {{ offer.offerPrice }}<span v-if="offer.ammountType==1">Tk</span><span v-if="offer.ammountType==2">%</span>
+              </td>
+              <td>
+               <img :src="'offerImage/'+offer.offerImage" height="100" width="200" />
               </td>
 
               <td>
@@ -260,10 +264,10 @@ export default {
     return {
       form: new Form({
         quan: "",
-        pname: "",
+        productId: "",
         startDate: "",
         endDate: "",
-        image: "",
+        offerImage: "",
         details: "",
         ammountType: "",
         totalPriceByTaka: "",
@@ -276,6 +280,7 @@ export default {
       brandshows: [],
       salesPrices: [],
       brands: [],
+      offers: [],
 
       takaview: false,
       percentageview: false,
@@ -285,6 +290,7 @@ export default {
 
   mounted() {
     this.viewPrice();
+    this.viewOffer();
 
     this.viewProductName();
   },
@@ -301,7 +307,7 @@ export default {
       let file = event.target.files[0];
       let reader = new FileReader();
       reader.onload = (event) => {
-        this.form.image = event.target.result;
+        this.form.offerImage = event.target.result;
         console.log(event.target.result);
       };
       reader.readAsDataURL(file);
@@ -352,12 +358,16 @@ export default {
     },
 
     priceShow() {
-      axios.get(`salesPrice/${this.form.pname}`).then((res) => {
+      axios.get(`salesPrice/${this.form.productId}`).then((res) => {
         this.view = true;
         return (this.salesPrices = res.data);
       });
     },
-
+    viewOffer() {
+      axios.get("offer").then((res) => {
+        this.offers = res.data.offer;
+      });
+    },
     deletePost(id) {
       axios
         .delete(`priceSetup/` + id, {

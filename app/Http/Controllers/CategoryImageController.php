@@ -77,11 +77,14 @@ class CategoryImageController extends Controller
     public function update(Request $request, $id)
     {
         $form = CategoryImage::where('pname',$id)->first();
-        $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
-        if (File::exists($usersImage)) {
-            unlink($usersImage);
-        }
+       
         if($strpos = strpos($request->image, ';')){
+            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image!==NULL){
+            if (File::exists($usersImage)) {
+                unlink($usersImage);
+            }
+        }
         $strpos = strpos($request->image, ';');
         $sub = substr($request->image, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -122,10 +125,12 @@ class CategoryImageController extends Controller
             $form->image9= '';
         }
         if($strpos = strpos($request->image1, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image1!==NULL){
+            $usersImage = public_path("/productImage/{$form->image1}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image1, ';');
         $sub = substr($request->image1, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -136,10 +141,12 @@ class CategoryImageController extends Controller
         $form->image1 = $name;
         }
         if($strpos = strpos($request->image2, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image2!==NULL){
+            $usersImage = public_path("/productImage/{$form->image2}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image2, ';');
         $sub = substr($request->image2, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -150,10 +157,12 @@ class CategoryImageController extends Controller
         $form->image2 = $name;
         }
         if($strpos = strpos($request->image3, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image3!==NULL){
+            $usersImage = public_path("/productImage/{$form->image3}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image3, ';');
         $sub = substr($request->image3, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -164,10 +173,12 @@ class CategoryImageController extends Controller
         $form->image3= $name;
         }
         if($strpos = strpos($request->image4, ';')){
+            if($form->image4!==NULL){
             $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image4, ';');
         $sub = substr($request->image4, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -178,10 +189,12 @@ class CategoryImageController extends Controller
         $form->image4= $name;
         }
         if($strpos = strpos($request->image5, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image5!==NULL){
+            $usersImage = public_path("/productImage/{$form->image5}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image5, ';');
         $sub = substr($request->image5, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -192,10 +205,12 @@ class CategoryImageController extends Controller
         $form->image5= $name;
         }
         if($strpos = strpos($request->image6, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image6!==NULL){
+            $usersImage = public_path("/productImage/{$form->image6}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image6, ';');
         $sub = substr($request->image6, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -206,10 +221,12 @@ class CategoryImageController extends Controller
         $form->image6= $name;
         }
         if($strpos = strpos($request->image7, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+           
+            if($form->image7!==NULL){ $usersImage = public_path("/productImage/{$form->image7}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image7, ';');
         $sub = substr($request->image7, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -220,10 +237,12 @@ class CategoryImageController extends Controller
         $form->image7= $name;
         }
         if($strpos = strpos($request->image8, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+            if($form->image8!==NULL){
+            $usersImage = public_path("/productImage/{$form->image8}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image8, ';');
         $sub = substr($request->image8, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -234,10 +253,12 @@ class CategoryImageController extends Controller
         $form->image8= $name;
         }
         if($strpos = strpos($request->image9, ';')){
-            $usersImage = public_path("/productImage/{$form->image}"); // get previous image from folder
+           
+            if($form->image9!==NULL){ $usersImage = public_path("/productImage/{$form->image9}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
         $strpos = strpos($request->image9, ';');
         $sub = substr($request->image9, 0, $strpos);
         $ex = explode('/', $sub)[1];

@@ -15,8 +15,9 @@ class HomeMenuController extends Controller
     {
       $menuget =  Category::orderby('id','desc')->where('lavel',1)->get();
       $submenuget =  Category::orderby('id','desc')->where('lavel',2)->get();
+      $thirdmenuget =  Category::orderby('id','desc')->where('lavel',3)->get();
 
-      return ['menuget'=>$menuget,'submenuget'=>$submenuget];
+      return ['menuget'=>$menuget,'submenuget'=>$submenuget,'thirdmenuget'=>$thirdmenuget];
     }
 
     /**

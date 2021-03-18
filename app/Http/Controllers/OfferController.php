@@ -13,7 +13,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offer=Offer::get();
+        $offer=Offer::with('salesPrice')->get();
         return ['offer'=>$offer];
     }
 
@@ -36,20 +36,20 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         $form = new Offer();
-        $strpos=strpos($request->image,';' );
-        $sub=substr($request->image,0,$strpos);
+        $strpos=strpos($request->offerImage,';' );
+        $sub=substr($request->offerImage,0,$strpos);
         $ex=explode('/',$sub)[1];
         $name=time().".".$ex;
-        $img=Image::make($request->image)->resize(395,296);
+        $img=Image::make($request->offerImage)->resize(470,300);
         $upload_path=public_path()."/offerImage/";
         $img->save($upload_path.$name);        
-        $form->image=$name;  
-        $form->pname = $request->pname;
+        $form->offerImage=$name;  
+        $form->productId = $request->productId;
         $form->startDate = $request->startDate;
         $form->endDate = $request->endDate;
         $form->offerPrice = $request->offerPrice;
         $form->ammountType = $request->ammountType;
-        if( $request->totalPriceByPercentage){
+        if( $request->ammountType==2){
             $form->totalPrice = $request->totalPriceByPercentage; 
         }
         else{

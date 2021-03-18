@@ -18,7 +18,7 @@ class CreatePurchaseProductsTable extends Migration
             $table->integer('invoiceNo')->nullable();
             $table->integer('supplierId');
             $table->integer('pname');
-            $table->integer('brand')->nullable();
+            $table->integer('brandId')->nullable();
             $table->integer('quan');
             $table->integer('unit')->nullable(); 
             $table->string('unitPrice');

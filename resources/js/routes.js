@@ -56,8 +56,11 @@ import  ProductTransferSummery from './components/admin/ProductTransferSummery.v
 import  ProductTransferBackReport from './components/admin/ProductTransferBackReport.vue';
 import  BrandwiseProductList from './components/admin/BrandwiseProductList.vue';
 import  CategoryPermission from './components/admin/CategoryPermission.vue';
+import  CustomerRegistration from './components/admin/CustomerSection/CustomerRegistration.vue';
+
 import  ProductImageAdd from './components/admin/ProductImageAdd.vue';
 import  OfferEntry from './components/admin/OfferManagement/OfferEntry.vue';
+import  OfferProductList from './components/admin/OfferManagement/OfferProductList.vue';
 import  ProductImageDetails from './components/admin/ProductImageDetails.vue';
 import  FilteringStatus from './components/admin/FilteringStatus.vue';
 import  CategoryWiseView from './components/website-view/CategoryWiseView.vue';
@@ -139,6 +142,12 @@ export const routes = [
          meta: { hideDashboard: true }
         
      },
+    {    name: 'offerproductlist',
+         path: '/offerproductlist',
+         component: OfferProductList,
+         meta: { hideDashboard: true }
+        
+     },
     {    name: 'searchproduct',
          path: '/searchproduct',
          component: SearchProduct,
@@ -148,6 +157,12 @@ export const routes = [
     {    name: 'districtlocation',
          path: '/districtlocation/:id',
          component: DistrictLocaton,
+         meta: { hideDashboard: true }
+        
+     },
+    {    name: 'customerregis',
+         path: '/customerregis',
+         component: CustomerRegistration,
          meta: { hideDashboard: true }
         
      },
@@ -484,8 +499,10 @@ export const routes = [
      name: 'viewthirdproduct',
      path: '/viewthirdproduct/:id',
      component: CategoryThirdProductView,
-     meta: { hideDashboard: true }
+      meta: { hideDashboard: true }
     },
+     
+    
      
      {
      name: 'productimage',

@@ -336,7 +336,7 @@ class CategoryController extends Controller
             $sub = substr($request->bannerImage2, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name =Str::random(5).time() . "." . $ex;
-            $img = Image::make($request->bannerImage2)->resize(1094, 256);
+            $img = Image::make($request->bannerImage2)->resize(563,173);
             $upload_path = public_path() . "/categoryImage/";
             $img->save($upload_path . $name,'jpg','png');
             $form->bannerImage2 = $name;
@@ -439,10 +439,12 @@ class CategoryController extends Controller
     {
         $form=Category::find($id);
         if($strpos = strpos($request->catImage, ';')){
+            if($form->catImage!==NULL){
             $usersImage = public_path("/categoryImage/{$form->catImage}"); // get previous image from folder
             if (File::exists($usersImage)) {
                 unlink($usersImage);
             }
+        }
             $strpos = strpos($request->catImage, ';');
             $sub = substr($request->catImage, 0, $strpos);
             $ex = explode('/', $sub)[1];
@@ -453,10 +455,11 @@ class CategoryController extends Controller
             $form->catImage = $name;
             }
         if($strpos = strpos($request->bannerImage, ';')){
-            $usersImage = public_path("/categoryImage/{$form->bannerImage}"); // get previous image from folder
-            if (File::exists($usersImage)) {
-                unlink($usersImage);
-            }
+            $usersImage2 = public_path("/categoryImage/{$form->bannerImage}"); // get previous image from folder
+            if($form->bannerImage!==NULL){
+            if (File::exists($usersImage2)) {
+                unlink($usersImage2);
+            }}
             $strpos = strpos($request->bannerImage, ';');
             $sub = substr($request->bannerImage, 0, $strpos);
             $ex = explode('/', $sub)[1];
@@ -471,10 +474,12 @@ class CategoryController extends Controller
             $form->bannerImage = $name;
             }
         if($strpos = strpos($request->bannerImage2, ';')){
-            $usersImage = public_path("/categoryImage/{$form->bannerImage2}"); // get previous image from folder
-            if (File::exists($usersImage)) {
-                unlink($usersImage);
+            if($form->bannerImage2!==NULL){
+            $usersImage3 = public_path("/categoryImage/{$form->bannerImage2}"); // get previous image from folder
+            if (File::exists($usersImage3)) {
+                unlink($usersImage3);
             }
+        }
             $strpos = strpos($request->bannerImage2, ';');
             $sub = substr($request->bannerImage2, 0, $strpos);
             $ex = explode('/', $sub)[1];
@@ -485,10 +490,12 @@ class CategoryController extends Controller
             $form->bannerImage2 = $name;
             }
         if($strpos = strpos($request->image, ';')){
-            $usersImage = public_path("/categoryImage/{$form->image}"); // get previous image from folder
-            if (File::exists($usersImage)) {
-                unlink($usersImage);
+            if($form->image!==NULL){ 
+            $usersImage4 = public_path("/categoryImage/{$form->image}"); // get previous image from folder
+            if (File::exists($usersImage4)) {
+                unlink($usersImage4);
             }
+        }
             $strpos = strpos($request->image, ';');
             $sub = substr($request->image, 0, $strpos);
             $ex = explode('/', $sub)[1];

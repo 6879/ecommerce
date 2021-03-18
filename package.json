@@ -36,6 +36,7 @@
         "vue-ckeditor2": "^2.1.5",
         "vue-ckeditor5": "^0.5.0",
         "vue-collapsible-component": "^0.1.3",
+        "vue-datatable": "^1.0.4",
         "vue-froala-wysiwyg": "^3.2.6",
         "vue-image-magnifier": "^0.2.1",
         "vue-image-zoomer": "^1.2.1",

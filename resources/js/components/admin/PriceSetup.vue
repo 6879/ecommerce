@@ -59,10 +59,10 @@
                       <option
                         v-for="brandshow in brandshows"
                         :key="brandshow.id"
-                        v-bind:value="brandshow.brand"
+                        v-bind:value="brandshow.brandId"
                       >
                        <p   v-for="brand in brands"
-                        :key="brand.id" v-if="brand.id==brandshow.brand"> {{ brand.brand }}</p>
+                        :key="brand.id" v-if="brand.id==brandshow.brandId"> {{ brand.brand }}</p>
                       </option>
                     </select>
                   </div>

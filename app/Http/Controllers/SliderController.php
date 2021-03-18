@@ -41,7 +41,17 @@ class SliderController extends Controller
         $sub = substr($request->image, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = time() . "." . $ex;
+        if($request->up){
+            $img = Image::make($request->image)->resize(827, 97);
+        }
+   
+        if($request->locale_filter_matches){
+            $img = Image::make($request->image)->resize(276, 280);
+        }
+   
+        else{
         $img = Image::make($request->image)->resize(200, 200);
+        }
         $upload_path = public_path() . "/images/";
         $img->save($upload_path . $name);
         $form = new Slider();
@@ -93,7 +103,13 @@ class SliderController extends Controller
             $sub = substr($request->image, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name = time() . "." . $ex;
+            if($request->up){
+                $img = Image::make($request->image)->resize(827, 97);
+            }
+       
+            else{
             $img = Image::make($request->image)->resize(200, 200);
+            }
             $upload_path = public_path() . "/images/";
             $img->save($upload_path . $name);
             $form->image = $name;

@@ -17,6 +17,8 @@ class Category extends Model
         'catImage','bannerImage',
         'bannerImage2','bannerImageUrl',
         'bannerImage2Url',
+        'bannerImageType',
+        'bannerImageStatus',
         'lavel','url'
     ];
 }

@@ -51,7 +51,18 @@
 .paddingImage {
     padding: 0px;
 }
-
+.hovercartoffer {
+    position: absolute;
+    background: #b58383;
+    top: 25%;
+    left: 1%;}
+    
+.addcartoffer{
+    position: absolute;
+top: 84%;
+left: 0;
+right: 0;
+}
 .paddingImage2 {
     padding: 3px;
 }
@@ -292,10 +303,15 @@ figure:hover+span {
 
 /* horizontal divider */
 .tk {
-    font-weight: 800;
-    color: black;
+    font-weight: bold;
+    color: #4c794a;
     margin-top: -1px;
-    font-size: 14px;
+    font-size: 100%;
+}
+.dPrice {
+    color: #690;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .ratting {
@@ -560,8 +576,7 @@ border-left: 1px solid #c8a005
 }
 .locationDrop{
     width: 101%;
-    text-align: center;
-   
+    text-align: center;   
     background: #e8e3e0;
     left: 0px;
 }
@@ -680,7 +695,7 @@ top: -64px;
 
 .adcart {
     position: absolute;
-    top: 299px;
+    top: 86%;
     left: 0;
     right: 0;
 }

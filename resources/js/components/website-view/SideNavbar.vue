@@ -51,13 +51,13 @@
                           <li
                             v-b-toggle="'accordionG2' + index"
                             class="d-flex"
-                            v-on:click="toggleItem(index)"
+                            v-on:click="toggleItem2(index+1)"
                           >
                             <span> {{ submenu.catName }}</span>
                             <strong class="ml-auto">
                               <i
                                 :class="[
-                                  isActive(index) ? 'fa-minus' : 'fa-plus',
+                                  isActive2(index+1) ? 'fa-minus' : 'fa-plus',
                                 ]"
                                 class="more-less fa d-flex in"
                               ></i>
@@ -71,7 +71,38 @@
                       accordion="my-accordion1"
                       role="tabpanel1"
                     >
-                      <b-card-body> </b-card-body>
+                      <b-card-body>
+                          <div v-for="(thirdmenu, index) in thirdmenus" :key="thirdmenu.id">
+                <div v-if="thirdmenu.preId == submenu.id">
+                  <div class="accordion" role="tablist">
+                        <b-card-header
+                        header-tag="header"
+                        class="p-1"
+                        role="tab1"
+                      >
+                        <router-link
+                          style="text-decoration: none; color: inherit"
+                          :to="{
+                            name: 'viewthird',
+                            params: { id: thirdmenu.id },
+                          }"
+                        >
+                          <li
+                            v-b-toggle="'accordionG3' + index"
+                            class="d-flex"
+                          
+                          >
+                            <span> {{ thirdmenu.catName }}</span>
+                            <strong class="ml-auto">
+                             
+                            </strong>
+                          </li>
+                        </router-link>
+                      </b-card-header>
+                  </div>
+                </div>
+                </div>
+                         </b-card-body>
                     </b-collapse>
                   </div>
                 </div>
@@ -95,11 +126,13 @@ export default {
       toggled: [],
       menus: [],
       submenus: [],
+      thirdmenus: [],
     };
   },
-  mounted() {
+ async mounted() {
     this.viewMenu();
     this.viewSubMenu();
+    this.viewThirdMenu();
   },
 
   methods: {
@@ -107,6 +140,19 @@ export default {
       return this.toggled.indexOf(item) >= 0;
     },
     toggleItem(item) {
+      const index = this.toggled.indexOf(item);
+
+      if (index >= 0) {
+        this.toggled.splice(index, 1);
+        return;
+      }
+
+      this.toggled.push(item);
+    },
+    isActive2(item) {
+      return this.toggled.indexOf(item) >= 0;
+    },
+    toggleItem2(item) {
       const index = this.toggled.indexOf(item);
 
       if (index >= 0) {
@@ -130,6 +176,14 @@ export default {
         .get("homemenu")
         .then((res) => {
           this.submenus = res.data.submenuget;
+        })
+        .catch((err) => console.log(err));
+    },
+    viewThirdMenu() {
+      axios
+        .get("homemenu")
+        .then((res) => {
+          this.thirdmenus = res.data.thirdmenuget;
         })
         .catch((err) => console.log(err));
     },

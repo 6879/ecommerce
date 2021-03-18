@@ -68,6 +68,23 @@
             </div>          
             <div class="row">
               <div class="col-md-12">
+                <div class="form-group" :class="{ 'has-error': form.errors.has('phone') }">
+                  <label for="exampleFormControlInput1">Phone</label>
+                  <input
+                    id="exampleFormControlInput1"
+                    placeholder="Phone"
+                    v-model="form.phone"
+                    type="text"
+                    name="email"
+                    :class="{ 'is-invalid': form.errors.has('phone') }"
+                    class="form-control"
+                  />
+                  <has-error :form="form" field="phone"></has-error>
+                </div>
+              </div>
+            </div>          
+            <div class="row">
+              <div class="col-md-12">
                 <div class="form-group" :class="{ 'has-error': form.errors.has('userId') }">
                   <label for="exampleFormControlInput1">User-Id</label>
                   <input
@@ -187,6 +204,7 @@ export default {
         address: "",     
         userId: "",     
         roll: "",     
+        phone: "",     
       }),
       getUsers: [],
       types: [],

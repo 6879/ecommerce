@@ -22,6 +22,7 @@ class User extends Authenticatable
         'roll',
         'userId',
         'address',
+        'phone',
         'password',
     ];
 

@@ -34,6 +34,7 @@ class Category extends JsonResource
             'preId' => $this->preId,        
             'lavel' => $this->lavel,        
             'url' => $this->url,        
+            'bannerImageType' => $this->bannerImageType,        
             'created_at' => $this->created_at,        
             'updated_at' => $this->updated_at,        
             

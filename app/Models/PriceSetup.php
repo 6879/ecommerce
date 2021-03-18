@@ -32,4 +32,7 @@ class PriceSetup extends Model
     public function purchaseProduct(){
         return $this->hasOne(PurchaseProduct::class,'pname','pname');
     }
+    public function offer(){
+        return $this->hasOne(Offer::class,'productId','pname');
+    }
 }
