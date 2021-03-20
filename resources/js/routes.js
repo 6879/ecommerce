@@ -57,6 +57,7 @@ import  ProductTransferBackReport from './components/admin/ProductTransferBackRe
 import  BrandwiseProductList from './components/admin/BrandwiseProductList.vue';
 import  CategoryPermission from './components/admin/CategoryPermission.vue';
 import  CustomerRegistration from './components/admin/CustomerSection/CustomerRegistration.vue';
+import  CustomerList from './components/admin/CustomerSection/CustomerList.vue';
 
 import  ProductImageAdd from './components/admin/ProductImageAdd.vue';
 import  OfferEntry from './components/admin/OfferManagement/OfferEntry.vue';
@@ -133,6 +134,12 @@ export const routes = [
     {    name: 'offer',
          path: '/offer',
          component: OfferEntry,
+         meta: { hideDashboard: true }
+        
+     },
+    {    name: 'customerlist',
+         path: '/customerlist',
+         component: CustomerList,
          meta: { hideDashboard: true }
         
      },

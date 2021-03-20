@@ -3,6 +3,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('product', require('./components/website-view/ProductComponent.vue').default);
 Vue.component('navbar', require('./components/website-view/SideNavbar.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 import Swal from 'sweetalert2'
       window.Swal = Swal

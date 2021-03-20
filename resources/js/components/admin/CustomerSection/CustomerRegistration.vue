@@ -6,6 +6,111 @@
         <center><h1 class="align-center">Customer Registration</h1></center>
         <form @submit.prevent="add">
           <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Division</label>
+                  <select
+                    class="form-control"
+                    v-model="form.divisionId"
+                    @change.prevent="districtShow()"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option
+                      v-for="division in divisions"
+                      :key="division.id"
+                      :value="division.id"
+                    >
+                      {{ division.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" v-if="districtShowForm">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select District</label>
+                  <select
+                    class="form-control"
+                    v-model="form.districtId"
+                    @change.prevent="thanaShow()"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option
+                      v-for="district in districts"
+                      :key="district.id"
+                      :value="district.id"
+                    >
+                      {{ district.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" v-if="upazila == true">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Thana</label>
+                  <select
+                    class="form-control"
+                    v-model="form.thanaId"
+                    @change.prevent="unionShow()"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option
+                      v-for="thana in thanas"
+                      :key="thana.id"
+                      :value="thana.id"
+                    >
+                      {{ thana.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row" v-if="unionForm == true">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Union</label>
+                  <select
+                    class="form-control"
+                    v-model="form.unionId"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option
+                      v-for="union in unions"
+                      :key="union.id"
+                      v-bind:value="union.id"
+                    >
+                      {{ union.union }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row" v-if="wardForm == true">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Ward</label>
+                  <select
+                    class="form-control"
+                    v-model="form.wardId"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option
+                      v-for="ward in wards"
+                      :key="ward.id"
+                      v-bind:value="ward.id"
+                    >
+                      {{ ward.ward }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          <div class="row">
             <div class="col-md-12">
               <div
                 class="form-group"
@@ -345,15 +450,28 @@ export default {
         image: "",
         permanentAddress: "",
         presentAddress: "",
-        terms:""
+        terms:"",
+          divisionId: "",
+        districtId: "",
+        thanaId: "",
+        unionId: "",
+        wardId: "",
        
       }),
+       divisions: [],
        searchresult:false,
         search:false,
         click:true,
         need:false,
         sponsor:false,
+         districtShowForm: false,
+      upazila: false,
+      unionForm: false,
+      wardForm: false,
     };
+  },
+  mounted(){
+  this.division();
   },
   methods:{
         playSound() {
@@ -372,7 +490,7 @@ export default {
         })
         .then((response) => {
           this.form.reset();
-          this.playsound();
+          this.playSound();
           Toast.fire({
             icon: "success",
             title: "Successfully Saved",
@@ -406,6 +524,34 @@ export default {
               })
            
          }, 
+          division() {
+      axios.get("/division").then((res) => {
+        this.divisions = res.data.division;
+      });
+    },
+          districtShow() {
+      axios.get("/district/" + this.form.divisionId).then((res) => {
+        this.districts = res.data.district;
+        this.districtShowForm = true;
+      });
+    },
+
+    thanaShow() {
+      axios.get("/thana/" + this.form.districtId).then((res) => {
+        this.thanas = res.data.thana;
+        this.upazila = true;
+      });
+    },
+    unionShow() {
+      axios.get("/union/" + this.form.thanaId).then((res) => {
+        this.unions = res.data.union;
+        this.unionForm = true;
+      });
+      axios.get("/ward/" + this.form.thanaId).then((res) => {
+        this.wards = res.data.ward;
+        this.wardForm = true;
+      });
+    },
          changeImage(event) {
       let file = event.target.files[0];
       let reader = new FileReader();

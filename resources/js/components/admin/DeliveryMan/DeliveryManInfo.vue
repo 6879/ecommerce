@@ -502,6 +502,7 @@ export default {
         phone: "",
       }),
       getUsers: [],
+      divisions: [],
       types: [],
       getDeliveryMan: [],
          allThanas:[],

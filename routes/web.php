@@ -142,3 +142,10 @@ Route::get('/union/{id}', 'BangladeshLocationController@union');
 Route::get('/ward/{id}', 'BangladeshLocationController@ward');
 Route::get('/deliveryTime/{id}', 'BangladeshLocationController@deliveryTime');
 Route::get('/deliveryTimeForWard/{id}', 'BangladeshLocationController@deliveryTimeForWard');
+Route::group( ['prefix' => 'vendor'],function(){
+    Route::get('/', 'Users\Admin\CustomerController@index')->name('customer.dashboard');
+    Route::get('/login', 'Auth\CustomerLoginController@showLoginForm')->name('customer.login');
+    Route::post('/login', 'Auth\CustomerLoginController@login')->name('customer.login.submit');
+    Route::get('/register', 'Auth\CustomerRegisterController@showRegisterForm')->name('customer.register');
+    Route::post('/register', 'Auth\CustomerRegisterController@register')->name('customer.register.submit');
+});

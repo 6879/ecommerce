@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
-use App\Models\CustomerRegistration;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Image;
@@ -15,12 +15,14 @@ class CustomerRegistrationController extends Controller
      */
     public function index()
     {
-        //
+        $customer=Customer::paginate(1);
+        $thana=Customer::distinct('thanaId','divisionId','districtId')->get(['thanaId','districtId','divisionId']);
+        return ['customer'=>$customer,'thana'=>$thana];
     }
     public function search(Request $request)
     {
        $search=$request->get('q');
-       return User::where('name',$search)->where('roll',50)->get();
+       return Customer::where('name',$search)->get();
 
     }
     /**
@@ -42,33 +44,40 @@ class CustomerRegistrationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
+            'password' => ['required', 'string', 'min:8'],
             'terms' => 'required',
             ]);       
-           $userId= User::insertGetId([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => $request['password'],              
-                'password' => Hash::make($request['password']),
-            ]);      
-           
+        
             $strpos=strpos($request->image,';' );
             $sub=substr($request->image,0,$strpos);
             $ex=explode('/',$sub)[1];
             $name=time().".".$ex;
             $img=Image::make($request->image)->resize(200,200);
-            $upload_path=public_path()."/adminProfileImage/";
+            $upload_path=public_path()."/customerImage/";
             $img->save($upload_path.$name ,'jpg','png');
-            $form= new CustomerRegistration();     
+            $form= new Customer();     
             $form->image=$name;      
                 
             $form->permanentAddress=$request->permanentAddress;      
             $form->phone=$request->phone;      
             $form->name=$request->name;      
+            $form->fname=$request->fname;      
+            $form->fullname=$request->fullname;      
+            $form->mname=$request->mname;      
+            $form->dob=$request->dob;      
+            $form->nid=$request->nid;      
             $form->presentAddress=$request->presentAddress;      
             $form->terms=$request->terms;      
             $form->email=$request->email;      
-                 
+            $form->divisionId=$request->divisionId;      
+            $form->districtId=$request->districtId;      
+            $form->thanaId=$request->thanaId;      
+            $form->unionId=$request->unionId;      
+            $form->wardId=$request->wardId;      
+            $form->permanentAddress=$request->permanentAddress;      
+            $form->password=Hash::make($request['password']) ;   
             $form->sponsorId=$request->sponsorId;      
             $form->save();  
     }
@@ -81,7 +90,8 @@ class CustomerRegistrationController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer=Customer::where('thanaId',$id)->paginate(1);
+        return ['customer'=> $customer];
     }
 
     /**
