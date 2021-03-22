@@ -70,6 +70,8 @@ import  DistrictLocaton from './components/website-view/Delivery-Location/Distri
 import  ThanaLocaton from './components/website-view/Delivery-Location/ThanaLocation.vue';
 import  WardLocaton from './components/website-view/Delivery-Location/WardLocation.vue';
 import  CategoryThirdProductView from './components/website-view/CategoryThirdProductView.vue';
+import  CustomerProfile from './components/website-view/Customer/CustomerProfile.vue';
+import  CustomerOrder from './components/website-view/Customer/CustomerOrder.vue';
 import  Offer from './components/website-view/Offer/Offer.vue';
 import  SearchProduct from './components/website-view/SearchProduct.vue';
 import  DeliveryManInfo from './components/admin/DeliveryMan/DeliveryManInfo.vue';
@@ -128,6 +130,18 @@ export const routes = [
     {    name: 'changepassword',
          path: '/changepassword',
          component: ChangePassword,
+         meta: { hideDashboard: true }
+        
+     },
+    {    name: 'customerorder',
+         path: '/customerorder',
+         component: CustomerOrder,
+         meta: { hideDashboard: true }
+        
+     },
+    {    name: 'customerprofile',
+         path: '/customerprofile',
+         component: CustomerProfile,
          meta: { hideDashboard: true }
         
      },

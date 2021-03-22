@@ -670,11 +670,96 @@
           >
             <p><span style="color: red">EN </span>| বাং</p>
           </div>
-          <div
-            class="col-2 col-md-1 pt-4 col-sm-1 col-xs-4 d-none d-sm-block headerhover hdbox"
+          <div v-if="infos==''"
+            class=" col-2 col-md-1 pt-4 col-sm-1 col-xs-4 d-none d-sm-block headerhover hdbox"
           >
-            <i class="fa fa-user-plus" aria-hidden="true"></i>
+     
+         <a @click.prevent="viewModal()" v-b-modal.modal-1> <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+     </div>
+          <div v-if="notlogin==true"
+            class=" col-2 col-md-1 pt-4 col-sm-1 col-xs-4 d-none d-sm-block headerhover hdbox"
+          >
+     
+       <a @click.prevent="viewModal()" v-b-modal.modal-1> <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+     </div>
+       <b-modal id="modal-1" title="Login" v-if="modal" >
+    <div class="container">
+      <div class="col-12 col-md-12 col-xs-12 offset-md-2">
+     <button class="btn fb "><img :src="'frontend/image/facebook.webp'" height="40" width="50">  Login With Facebook</button>
+      </div>
+      <div class="col-12 col-md-12 col-xs-12 mt-2 offset-md-2" v-if="phone">
+     <button class="btn email " @click.prevent="openEmail"><img :src="'frontend/image/envlope.jpg'" height="40" width="50">  Login With Email</button>
+      </div>
+      <div class="col-12 col-md-12 col-xs-12 mt-2 offset-md-2" v-if="emailAD">
+     <button class="btn phone " @click.prevent="openPhone"><img :src="'frontend/image/phone.webp'" height="40" width="50">  Login With Mobile</button>
+      </div>
+    <div >
+      <div v-if="phone">
+         <div class="col-12 col-md-12 col-xs-12 align-center mt-2">
+               or
+            PLEASE ENTER YOUR MOBILE PHONE NUMBER
+     </div>
+         <div class="col-12 col-md-12 col-xs-12 align-center mt-2">
+            <p> <img :src="'frontend/image/flag.png'" height="40" width="40"/>
+            <input type="tel" value="+88" class="tel"  placeholder="" >
+            </p>
+     </div>
+         <div class="col-12 col-md-12 col-xs-12 align-center mt-2">
+           <button     class="btn btn-lg btn-primary btn-block">Sign in</button>
+     </div>
+      </div>  
+         
+        <div class="col-md-12 mt-3" v-if="emailAD">
+         
+            <form @submit.prevent="loginInfo">            
+
+              <div class="form-group">
+                <label for="email"> Email Address</label>
+                <input type="email" v-model="email" class="form-control" name="email" placeholder="Email Address">
+              </div>
+
+              <div class="form-group">
+                <label for="password"> Password</label>
+                <input type="password" v-model="password" class="form-control" name="password" placeholder="Password">
+              </div>
+
+              <button     class="btn btn-lg btn-primary btn-block">Sign in</button>
+            </form>
+      </div>
+      <div class="col-12 col-md-12 col-xs-12 align-center mt-2">
+       <center> <p> New member? Register here.
+        </p></center>
+              </div>
+      <div class="col-12 col-md-12 col-xs-12 align-center mt-2">
+       <center> <p> This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" data-reactid=".32sn2ofjqk.1.0.0.0.2.0.6.0.1">Privacy Policy</a>
+        and <a href="https://policies.google.com/terms" target="_blank" data-reactid=".32sn2ofjqk.1.0.0.0.2.0.6.0.3">Terms of Service</a>
+        </p></center>
+              </div>
+    </div>
+  </div>
+  </b-modal>
+          <div  v-if="infos!==''&&login==true"    class="dropdown col-2 col-md-1 pt-4 col-sm-1 col-xs-4 d-none d-sm-block headerhover hdbox">
+         {{infos.name}}
+         <div class="dropdown-content prof" >  
+          <router-link :to="{ name: 'customerprofile'}"><i class="fa fa-user" aria-hidden="true"></i>
+My Profile</router-link>
+           <router-link :to="{ name: 'customerorder'}"><i class="fas fa-cube"></i>
+My Order</router-link>
+          <a href="#"><i class="far fa-money-bill-alt"></i>
+
+Balance Sheet</a>
+          <a href="#"><i class="fa fa-tasks" aria-hidden="true"></i>
+Promotion</a>
+          <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>
+Message</a>
+          <a href="#"><i class="fa fa-bug" aria-hidden="true"></i>
+Complain</a>
+
+           <a href="#" @click.prevent="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Logout</a>
           </div>
+        </div>
+         
           <div class="col-2 mt-2 col-xs-4" style="top: 11px">
             <i
               class="fa fa-ellipsis-v d-md-none mt-2 menuHeight"
@@ -1467,6 +1552,8 @@ export default {
   },
   data() {
     return {
+       email: '',
+      password: '',
       searchItem: "",
       products: [],
       informations: [],
@@ -1499,6 +1586,7 @@ export default {
       divisions: [],
        offers: [],
        pnames: [],
+       infos: [],
       badge: "0",
       qun: 1,
       pid: "",
@@ -1509,13 +1597,20 @@ export default {
       slider: true,
       category: true,
       categoryItem: true,
+      login: true,
+      notlogin: false,
+      modal: true,
+      emailAD: false,
+      phone: true,
       quantity: 1,
       resultDiv: {
         display: "none",
       },
+       
     };
   },
  async mounted() {
+   this.viewInfo();
     this.viewLogo();
     this.viewMenuCat();
     this.viewPrice();
@@ -1535,6 +1630,58 @@ export default {
   },
 
   methods: {
+     loginInfo() {
+        axios.post('/vendor/login',
+            {
+              email:this.email,
+              password:this.password,
+            })
+            .then((res) => {
+              localStorage.setItem('usertoken', res.data.token)
+                this.email = ''
+                this.password = ''
+               this.login=true;
+               this.viewInfo();
+               this.notlogin=false;
+               this.modal=false;
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+          this.emitMethod()
+      },
+
+      emitMethod() {
+          EventBus.$emit('logged-in','loggedin')
+      },
+  
+    logout() {
+                axios.post('/logout')
+                    .then(res => {
+                      
+                  this.login=false;
+                  this.notlogin=true;
+                   this.modal=true;
+                    });
+            },
+            openEmail(){
+            this.emailAD=true;
+            this.phone=false;
+            },
+            openPhone(){
+            this.emailAD=false;
+            this.phone=true;
+            },
+            viewModal(){
+             this.modal=true;
+            },
+    viewInfo(){
+ axios.get('customerInfo').then((res)=>{
+       this.infos=res.data.customer;
+      })
+    },
    viewProductName() {
       fetch("api/productnames")
         .then((res) => res.json())

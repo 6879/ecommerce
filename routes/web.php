@@ -21,6 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::post('change-password', 'ChangePasswordController@store');
+Route::post('changepassword', 'CustomerChangePasswordController@store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(
     ['middleware' => 'auth'],
@@ -149,3 +150,4 @@ Route::group( ['prefix' => 'vendor'],function(){
     Route::get('/register', 'Auth\CustomerRegisterController@showRegisterForm')->name('customer.register');
     Route::post('/register', 'Auth\CustomerRegisterController@register')->name('customer.register.submit');
 });
+Route::resource('customerInfo', 'CustomerInfoController');

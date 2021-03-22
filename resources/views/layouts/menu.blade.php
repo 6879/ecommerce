@@ -1,5 +1,5 @@
-<div class="col-6 col-md-2 mt-0 d-none d-sm-block" style="position:fixed">
-    <div>
+<div class="col-6 col-md-2 mt-0 d-none d-sm-block"  style="position:fixed">
+    <div >
     @php
     $offer=\App\Models\Offer::count();
     @endphp

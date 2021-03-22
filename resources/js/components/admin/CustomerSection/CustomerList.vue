@@ -20,8 +20,8 @@
     <div v-for="(inf,index) in thns" :key="inf.id">
          <div>
         
-  <b-button       @click="getInformation(inf.thanaId)" variant="primary"><span v-for="division in divisions" v-if="division.id==inf.divisionId">    {{division.name}}</span> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  <span v-for="district in allDistricts" v-if="district.id==inf.districtId">   {{district.name}} </span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  <span v-for="thana in allThanas" v-if="thana.id==inf.thanaId">  {{thana.name}} </span></b-button>
-  
+  <b-button    v-b-toggle="'accordionG' + index"     @click="getInformation(inf.thanaId)" variant="primary"> <span v-for="division in divisions" v-if="division.id==inf.divisionId">    {{division.name}}</span> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  <span v-for="district in allDistricts" v-if="district.id==inf.districtId">   {{district.name}} </span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  <span v-for="thana in allThanas" v-if="thana.id==inf.thanaId">  {{thana.name}} </span></b-button>
+   <b-collapse   v-bind:id="'accordionG' + index" class="mt-2">
     <b-card>
       <div >
      <div class="table-responsive">
@@ -85,17 +85,19 @@
                 /></td>
               <td>{{ info.presentAddress }}</td>
               <td>{{ info.permanentAddress }}</td>
-               <pagination :data="infos" @pagination-change-page="getInformation"></pagination>
+                
+           
             </tr>
           </tbody> 
         
+          
         </table>
        
-        
+         <pagination :data="infos" @pagination-change-page="getInf"></pagination>
       </div>
     </div>
     </b-card>
- 
+   </b-collapse>
 </div>
    
      
@@ -117,7 +119,7 @@ export default {
       allThanas: [],
       allDistricts: [],   
       infos: [],
-   
+      getId:'',
       thns: [],
      moment: moment,
  
@@ -147,7 +149,17 @@ export default {
       axios.get(`customer/${id}?page=`+ page)
    
         .then((res) => {
-          this.infos = res.data.customer;
+       (this.infos = res.data.customer);
+        return this.getId=id
+        })
+        .catch((err) => console.log(err));
+    },
+ 
+    getInf(page=1) {
+      axios.get(`customer/${this.getId}?page=`+ page)
+   
+        .then((res) => {
+       return (this.infos = res.data.customer);
         
         })
         .catch((err) => console.log(err));

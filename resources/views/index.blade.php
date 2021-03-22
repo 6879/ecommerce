@@ -11,7 +11,7 @@
     <!-- ./content category -->
     <!-- content product1 -->
 
-   <product></product>
+   <product ></product>
  
 
  
